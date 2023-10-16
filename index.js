@@ -34,7 +34,7 @@ keys.addEventListener("click", (e) => {
         //If the calculator shows a non-zero number, we want to append the clicked key to the displayed number.
         display.textContent = displayedNum + keyContent; //update previousKeyType for each clicked key
       }
-      console.log("number key!");
+      // console.log("number key!");
       calculator.dataset.previousKey = "number";
     }
     // If the key has a data-action that is either add, subtract, multiply or divide, we know the key is an operator.
@@ -63,7 +63,7 @@ keys.addEventListener("click", (e) => {
         // If there are no calculations, set displayedNum as the firstValue
         calculator.dataset.firstValue = displayedNum;
       }
-      console.log("operator key!");
+      // console.log("operator key!");
       //user hits an operator key, the operator should be highlighted so user knows the operator is active.
       key.classList.add("is-depressed");
       // Add custom attribute tell if the previous key is an operator key
@@ -74,7 +74,8 @@ keys.addEventListener("click", (e) => {
     //If the key’s data-action is decimal, we know the user clicked on the decimal key.
     else if (action === "decimal") {
       //a decimal should appear on the display. If user hits any number after hitting a decimal key, the number should be appended on the display as well.
-      console.log("decimal key!");
+
+      // console.log("decimal key!");
       //if the key’s data-action is clear, we know the user clicked on the clear (the one that says AC) key
       //also check is string has a dot do nothing if it does
       if (!displayedNum.includes(".")) {
@@ -99,7 +100,7 @@ keys.addEventListener("click", (e) => {
 
       display.textContent = 0;
 
-      console.log("clear key!");
+      // console.log("clear key!");
       calculator.dataset.previousKeyType = "clear";
     }
     // If the key’s data-action is calculate, we know the user clicked on the equals key.
@@ -119,7 +120,7 @@ keys.addEventListener("click", (e) => {
 
       calculator.dataset.modValue = secondValue;
       calculator.dataset.previousKeyType = "calculate";
-      console.log("equal key!");
+      // console.log("equal key!");
     }
   }
 });
