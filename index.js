@@ -2,10 +2,10 @@ const calculator = document.querySelector(".calculator");
 const keys = calculator.querySelector(".calculator__keys");
 const display = document.querySelector(".calculator__display");
 
-keys.addEventListener("click", (e) => {
-  if (e.target.matches("button")) {
+keys.addEventListener("click", (event) => {
+  if (event.target.matches("button")) {
     // listen for all key presses &determine wich key was pressed
-    const key = e.target;
+    const key = event.target;
 
     // Remove .is-depressed class from all keys
 
