@@ -26,7 +26,7 @@ body {
   overflow: hidden;
 }
 
-.calculator__display {
+.calculator-display {
   background-color: #8b8989;
   padding: 10px;
   text-align: right;
@@ -34,18 +34,13 @@ body {
   color: white;
 }
 
-.calculator__output {
-  font-size: 2em;
-  color: white;
-  overflow: hidden;
-}
-
-.calculator__keys {
+.calculator-keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   padding: 10px;
 }
+
 
 .top-row {
   grid-column: 1 / span 4;
