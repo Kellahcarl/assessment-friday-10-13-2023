@@ -4,14 +4,7 @@ const display = document.querySelector(".calculator__display");
 
 keys.addEventListener("click", (event) => {
   if (event.target.matches("button")) {
-    // listen for all key presses &determine wich key was pressed
     const key = event.target;
-
-    // Remove .is-depressed class from all keys
-
-    Array.from(key.parentNode.children).forEach((k) =>
-      k.classList.remove("is-depressed")
-    );
     const action = key.dataset.action;
     const previousKeyType = calculator.dataset.previousKeyType;
 
@@ -34,10 +27,10 @@ keys.addEventListener("click", (event) => {
         //If the calculator shows a non-zero number, we want to append the clicked key to the displayed number.
         display.textContent = displayedNum + keyContent; //update previousKeyType for each clicked key
       }
-      // console.log("number key!");
+
       calculator.dataset.previousKey = "number";
     }
-    // If the key has a data-action that is either add, subtract, multiply or divide, we know the key is an operator.
+    // If the key has a data-action that is either add, subtract, multiply or divide, we know the key is an operator.de
     else if (
       action === "add" ||
       action === "subtract" ||
@@ -63,9 +56,7 @@ keys.addEventListener("click", (event) => {
         // If there are no calculations, set displayedNum as the firstValue
         calculator.dataset.firstValue = displayedNum;
       }
-      // console.log("operator key!");
-      //user hits an operator key, the operator should be highlighted so user knows the operator is active.
-      key.classList.add("is-depressed");
+
       // Add custom attribute tell if the previous key is an operator key
       calculator.dataset.previousKeyType = "operator";
       calculator.dataset.firstValue = displayedNum;
@@ -74,10 +65,7 @@ keys.addEventListener("click", (event) => {
     //If the key’s data-action is decimal, we know the user clicked on the decimal key.
     else if (action === "decimal") {
       //a decimal should appear on the display. If user hits any number after hitting a decimal key, the number should be appended on the display as well.
-
-      // console.log("decimal key!");
-      //if the key’s data-action is clear, we know the user clicked on the clear (the one that says AC) key
-      //also check is string has a dot do nothing if it does
+      //check if the displayed number already has a decimal. If it does, do nothing. If it doesn’t, add a decimal to the displayed number.also check is string has a dot do nothing if it does
       if (!displayedNum.includes(".")) {
         display.textContent = displayedNum + ".";
       } else if (
@@ -100,7 +88,7 @@ keys.addEventListener("click", (event) => {
 
       display.textContent = 0;
 
-      // console.log("clear key!");
+      
       calculator.dataset.previousKeyType = "clear";
     }
     // If the key’s data-action is calculate, we know the user clicked on the equals key.
@@ -116,7 +104,7 @@ keys.addEventListener("click", (event) => {
         }
         display.textContent = calculate(firstValue, operator, secondValue);
       }
-      //set modifier value carry forward the previous secondValue into the new calculation. For secondValue to persist to the next calculation, we need to store it in another custom attribute
+      //set modifier value carry forward the previous secondValue into the new calculation. For secondValue to persist to the next calculation, we store it in an attribute
 
       calculator.dataset.modValue = secondValue;
       calculator.dataset.previousKeyType = "calculate";
